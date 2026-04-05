@@ -10,7 +10,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user = $pdo->prepare('SELECT * FROM users WHERE login = ?');
     $user->execute([$login]);
     $user = $user->fetch();
-    // var_dump($user);
     if (!$user) {
         $error = "Неверный логин или пароль!";
     } else if(password_verify($password, $user["password"]) === false) {
