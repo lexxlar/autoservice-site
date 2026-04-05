@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $password = password_hash($password, PASSWORD_DEFAULT);
 
-            $sql = $pdo->prepare("INSERT INTO users (login, password, email, first_name, last_name, telephone) VALUES (?, ?, ?, ?, ?, ?)");
+            $sql = $pdo->prepare("INSERT INTO users (login, password, email, first_name, last_name, phone) VALUES (?, ?, ?, ?, ?, ?)");
             $sql->execute([$login, $password, $email, $first_name, $last_name, $telephone]);
             header('Location: login.php');
             exit;
