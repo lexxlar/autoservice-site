@@ -1,9 +1,11 @@
 <?php
 session_start();
+// Подключение БД
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/db.php'; 
+$user_id = $_SESSION["user_id"] ?? null;                 // Принимаем id пользователя
+$user_role = $_SESSION['role'] ?? null;                  // Принимаем его роль
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/db.php';
-$user_id = $_SESSION["user_id"] ?? null;
-$user_role = $_SESSION['role'] ?? null;
+// Получаем настоящее имя пользователя
 if ($user_id != null) {
     $stmt = $pdo->prepare("SELECT first_name FROM users WHERE id = ?");
     $stmt->execute([$user_id]);
@@ -41,6 +43,7 @@ if ($user_id != null) {
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Каталог</a>
                 </li>
+                <!-- ПРОВЕРКА РОЛИ ПОЛЬЗОВАТЕЛЯ И ВЫВОД СООТВЕТСВУЮЩЕГО МЕНЮ-->
                 <?php
                 if ($user_role === null) {
                     echo '
