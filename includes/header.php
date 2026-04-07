@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include_once '/db.php';
+include_once '/includes/db.php';
 ?>
 <!DOCTYPE html>
 <html lang="ru">
