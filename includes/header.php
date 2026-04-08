@@ -39,49 +39,35 @@ if ($user_id != null) {
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Каталог</a>
                 </li>
+                </ul>
                 <!-- ПРОВЕРКА РОЛИ ПОЛЬЗОВАТЕЛЯ И ВЫВОД СООТВЕТСВУЮЩЕГО МЕНЮ-->
                 <?php
                 if ($user_role === null) {
-                    echo '
-                    <div class="d-flex">
-                        <li class="nav-item">
-                            <a class="nav-link"  href="/login.php">Вход</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/register.php">Зарегистрироваться</a>
-                        </li>
-                    </div>
-                ';
-                } else if ($user_role === 'buyer'){
-                    echo '
-                    <li class="nav-item">
-                        <a class="nav-link" href="/user_panel.php">' . htmlspecialchars($user_name) . '</a>
-                    </li>
-                    <li class="nav-item" style="position: absolute; right: 50px;">
-                        <a class="nav-link" href="/logout.php">Выход</a>
-                    </li>
-                ';
-                } else if ($user_role === 'admin'){
-                    echo '
-                    <div class="d-flex">
-                        <li class="nav-item">
-                            <a class="nav-link"  href="/user_panel.php">Имя пользователя</a>
-                        </li>
-                    </div>
-                    <li class="nav-item">
-                        <a class="nav-link"  href="/admin/index.php">Админ-панель</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/logout.php">Выход</a>
-                    </li>
-                ';
+                    // Гость
+                    echo '<ul class="navbar-nav">
+                            <li class="nav-item"><a class="nav-link" href="/login.php">Вход</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/register.php">Регистрация</a></li>
+                        </ul>';
+                } else {
+                    // Авторизованный (и buyer, и admin)
+                    echo '<ul class="navbar-nav">';
+                    
+                    // Ссылка на админку, если роль подходящая
+                    if ($user_role === 'admin') {
+                        echo '<li class="nav-item"><a class="nav-link text-danger" href="/admin/index.php">Админ-панель</a></li>';
+                    }
+
+                    // Имя и Выход
+                    echo '<li class="nav-item"><a class="nav-link fw-bold" href="/user_panel.php">' . htmlspecialchars($user_name) . '</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/logout.php">Выход</a></li>
+                        </ul>';
                 }
                 ?>
-                </ul>
+                
             </div>
         </div>
     </nav>
