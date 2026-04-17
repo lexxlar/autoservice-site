@@ -1,6 +1,27 @@
 <?php 
+
+// Добавить проверку на вход администратора в систему
 include_once $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php'; 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/db.php'; 
+
+if (isset($_GET['delete_id'])) {
+    $id = (int)$_GET['delete_id'];
+    
+    // 1. (Опционально) Сначала можно удалить саму картинку из папки uploads
+    $stmt = $pdo->prepare("SELECT image FROM cars WHERE id = ?");
+    $stmt->execute([$id]);
+    $img = $stmt->fetchColumn();
+    if ($img && file_exists($_SERVER['DOCUMENT_ROOT'] . '/uploads/cars/' . $img)) {
+        unlink($_SERVER['DOCUMENT_ROOT'] . '/uploads/cars/' . $img);
+    }
+
+    // 2. Удаляем запись из базы
+    $stmt = $pdo->prepare("DELETE FROM cars WHERE id = ?");
+    $stmt->execute([$id]);
+
+    header("Location: cars.php"); // Перезагружаем страницу, чтобы данные обновились
+    exit;
+}
 ?>
 <br>
 <div class="container w-50">
@@ -79,4 +100,40 @@ if (isset($_POST['add_car'])) {
     }
 }
 ?>
+
+<?php
+// Получение списка автомобилей из БД
+$stmt = $pdo->query("SELECT * FROM cars ORDER BY id DESC");
+$cars = $stmt->fetchAll(); 
+?>
+
+<div class="container w-50">
+    <table class="table table-striped table-hover mt-4">
+        <thead>
+            <tr>
+                <th>Марка</th>
+                <th>Модель</th>
+                <th>Год</th>
+                <th>Цена</th>
+                <th>Пробег</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($cars as $car): ?>
+                <tr>
+                    <td><?= htmlspecialchars($car['brand']) ?></td>
+                    <td><?= htmlspecialchars($car['model']) ?></td>
+                    <td><?= $car['year'] ?></td>
+                    <td><?= number_format($car['price'], 0, '', ' ') ?> ₽</td>
+                    <td><?= number_format($car['mileage'], 0, '', ' ') ?> км</td>
+                    <td>
+                        <a href="?delete_id=<?= $car['id'] ?>" class="btn btn-danger btn-sm">Удалить</a>
+                        <a href="edit_car.php?id=<?= $car['id'] ?>" class="btn btn-warning btn-sm">Редактировать</a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.php'; ?>
