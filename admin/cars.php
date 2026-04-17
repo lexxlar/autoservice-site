@@ -1,6 +1,5 @@
 <?php 
-
-// Добавить проверку на вход администратора в систему
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/auth_check.php';
 include_once $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php'; 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/db.php'; 
 
