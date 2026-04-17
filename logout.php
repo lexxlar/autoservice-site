@@ -1,7 +1,8 @@
 <?php
 session_start();
-
-session_destroy();
-
+$_SESSION = []; // Очистка массива данных сессии
+session_destroy(); // Удаление файла сессии
 header('Location: index.php');
+exit;
+
 ?>

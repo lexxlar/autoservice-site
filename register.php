@@ -67,6 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <?php endif; ?>
 
                 <form action="" method="POST">
+                    <br>
                     <h2>Регистрация</h2>
                     <div class="mb-3">
                         <label for="login" class="form-label">Логин</label>

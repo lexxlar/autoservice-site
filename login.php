@@ -42,6 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="alert alert-danger"><?= $error ?></div> 
                 <?php endif; ?>
                 <form action="" method="post">
+                    <br>
                     <h2>Вход</h2>
                     <div class="mb-3">
                         <label for="login" class="form-label">Логин</label>
