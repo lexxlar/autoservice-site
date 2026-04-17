@@ -97,6 +97,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <input type="tel" class="form-control" name="telephone" id="telephone" placeholder="+7 (999) 999-99-99" value="<?= htmlspecialchars($telephone ?? '') ?>">
                     </div>
                     <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+                    <div class="mt-3">
+                        <p>Уже есть аккаунт? <a href="login.php">Войти</a></p>
+                        <a href="index.php" class="text-muted">← На главную</a>
+                    </div>
                 </form>
             </div>
         </div>

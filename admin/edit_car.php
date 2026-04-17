@@ -31,7 +31,7 @@ if (isset($_POST['update_car'])) {
 }
 ?>
 
-<div class="container mt-4">
+<div class="container mt-4 w-50">
     <h2>Редактировать: <?= htmlspecialchars($car['brand'] . ' ' . $car['model']) ?></h2>
     <form method="POST" enctype="multipart/form-data">
         <input type="text" name="brand" value="<?= htmlspecialchars($car['brand']) ?>" class="form-control mb-2">

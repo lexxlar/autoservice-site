@@ -12,7 +12,7 @@ if ($user_id != null) {
     $user_data = $stmt->fetch();
     $user_name = $user_data['first_name'] ?? 'Пользователь';
 }
-
+// var_dump($_SESSION);
 ?>
 <!DOCTYPE html>
 <html lang="ru">

@@ -52,6 +52,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <input type="password" class="form-control" name="password" id="password">
                     </div>
                     <button type="submit" class="btn btn-primary">Войти</button>
+                    <div class="mt-3">
+                        <p>Нет аккаунта? <a href="register.php">Зарегистрироваться</a></p>
+                        <a href="index.php" class="text-muted">← На главную</a>
+                    </div>
                 </form>
             </div>
         </div>

@@ -1,4 +1,5 @@
-<?php include 'includes/header.php'; ?>
+<?php include 'includes/header.php'; 
+?>
 <main class="container">
     <h2>Автосалон Монарх!</h2>
     
