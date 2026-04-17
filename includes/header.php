@@ -49,7 +49,8 @@ if ($user_id != null) {
                     
                     // Ссылка на админку, если роль подходящая
                     if ($user_role === 'admin') {
-                        echo '<li class="nav-item"><a class="nav-link text-danger" href="/admin/index.php">Админ-панель</a></li>';
+                        echo '<li class="nav-item"><a class="nav-link text-danger" href="/admin/index.php">Панель</a></li>';
+                        echo '<li class="nav-item"><a class="nav-link text-danger" href="/admin/requests.php">Заявки</a></li>';
                     }
 
                     // Имя и Выход

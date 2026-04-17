@@ -39,14 +39,26 @@ if (isset($_POST['book_test_drive']) && isset($_SESSION['user_id'])) {
             <?php if (isset($_SESSION['user_id'])): ?>
                 <div class="card p-3 mt-4 bg-light">
                     <h5>Записаться на тест-драйв</h5>
+                    
                     <?php if (isset($success)): ?>
-                        <div class="alert alert-success"><?= $success ?></div>
+                        <div class="alert alert-success shadow-sm">
+                            <h5 class="alert-heading">✅ Заявка принята!</h5>
+                            <p>Ваша запись на тест-драйв <strong><?= htmlspecialchars($car['brand'] . ' ' . $car['model']) ?></strong> успешно отправлена.</p>
+                            <hr>
+                            <p class="mb-0 small">Наш менеджер свяжется с вами по указанной почте или телефону для подтверждения времени.</p>
+                            <br>
+                            <a href="catalog.php" class="btn btn-outline-success btn-sm">Вернуться в каталог</a>
+                        </div>
                     <?php else: ?>
                         <form method="POST">
-                            <input type="date" name="request_date" class="form-control mb-2" required min="<?= date('Y-m-d') ?>">
-                            <button name="book_test_drive" class="btn btn-success w-100">Отправить заявку</button>
+                            <div class="mb-3">
+                                <label class="form-label text-muted small">Выберите желаемую дату визита</label>
+                                <input type="date" name="request_date" class="form-control" required min="<?= date('Y-m-d') ?>">
+                            </div>
+                            <button type="submit" name="book_test_drive" class="btn btn-success w-100">Отправить заявку</button>
                         </form>
                     <?php endif; ?>
+
                 </div>
             <?php else: ?>
                 <div class="alert alert-warning mt-4">
