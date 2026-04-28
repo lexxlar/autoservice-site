@@ -1,6 +1,6 @@
 <?php 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/auth_check.php'; // Только для админа
-include_once $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php'; 
+
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/db.php'; 
 
 // Обработка смены статуса
@@ -32,6 +32,8 @@ $sql = "SELECT
 
 $stmt = $pdo->query($sql);
 $requests = $stmt->fetchAll();
+
+include_once $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php'; 
 ?>
 
 <main class="container mt-4">

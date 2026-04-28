@@ -7,7 +7,7 @@ $stmt = $pdo->query("SELECT * FROM cars ORDER BY id DESC LIMIT 3");
 $latest_cars = $stmt->fetchAll();
 ?>
 
-<div class="p-5 mb-4 bg-dark text-white rounded-3 shadow" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1600&q=80'); background-size: cover; background-position: center;">
+<div class="p-5 mb-4 bg-dark text-white rounded-3 shadow" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(/uploads/back-image.avif); background-size: cover; background-position: center;">
     <div class="container-fluid py-5 text-center">
         <h1 class="display-5 fw-bold">Найдите автомобиль своей мечты</h1>
         <p class="fs-4">Лучшие предложения проверенных автомобилей с гарантией и тест-драйвом.</p>
