@@ -1,8 +1,8 @@
 <?php
 $host = 'localhost';
-$db   = 'devicars';             // Имя БД
-$user = 'alex';                 
-$pass = '123123';
+$db   = 'ИМЯ БД';
+$user = 'ИМЯ ПОЛЬЗОВАТЕЛЯ БД';                 
+$pass = 'ПАРОЛЬ БД';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
@@ -14,7 +14,7 @@ $options = [
 
 try {
      $pdo = new PDO($dsn, $user, $pass, $options);
-     // echo "Соединение установлено!"; // Раскомментируй для теста
+     // echo "Соединение установлено!";
 } catch (\PDOException $e) {
      throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
