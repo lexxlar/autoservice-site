@@ -43,6 +43,7 @@ $cars = $stmt->fetchAll();
             <?php endforeach; ?>
         <?php endif; ?>
     </div>
+    
 
     <div id="noResults" class="d-none">
         <div class="alert alert-info text-center">
@@ -54,9 +55,9 @@ $cars = $stmt->fetchAll();
 
 <script>
 const searchInput = document.getElementById('search');
-const cards       = document.querySelectorAll('.car-card');
-const countEl     = document.getElementById('resultCount');
-const noResults   = document.getElementById('noResults');
+const cards = document.querySelectorAll('.car-card');
+const countEl = document.getElementById('resultCount');
+const noResults = document.getElementById('noResults');
 
 function updateCount() {
     const visible = document.querySelectorAll('.car-card:not(.d-none)').length;
